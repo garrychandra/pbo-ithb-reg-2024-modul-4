@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class DosenTetap extends Dosen {
+public class DosenTetap extends Dosen implements StaffMethod {
     private int salary;
 
     public DosenTetap(String Nama, String alamat, String ttl, int notelp, int nik, String departemen, int salary) {
@@ -19,6 +19,22 @@ public class DosenTetap extends Dosen {
 
     public int getSalary() {
         return salary;
+    }
+
+    @Override
+    public int getGaji() {
+        int count = 0;
+        List<MatkulAjar> matkulAjar = super.getMatkulAjar();
+
+        for(int i = 0; i < matkulAjar.size(); i++){
+            MatkulAjar matkulIni = matkulAjar.get(i);
+            for(int j = 0; j < matkulIni.getPresensi().size(); j++){
+                if(matkulIni.getPresensi().get(j).getStatus() == Status.HADIR){
+                    count++;
+                }
+            }
+        }
+        return salary + (count * 25000);
     }
 
     @Override

@@ -1,5 +1,5 @@
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
 public class MatkulAmbil {
     private MataKuliah mataKuliah;
@@ -18,7 +18,7 @@ public class MatkulAmbil {
 
     public MatkulAmbil(){
         mataKuliah = new MataKuliah();
-        presensi = new ArrayList<Presensi>();
+        presensi = new ArrayList<>();
     }
 
     public MataKuliah getMataKuliah() {

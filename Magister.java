@@ -1,7 +1,7 @@
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Magister extends Mahasiswa {
+public class Magister extends Mahasiswa implements MahasiswaMethod {
 
     private List<MatkulAmbil> matkul;
     private String judulPenelitian;
@@ -34,6 +34,22 @@ public class Magister extends Mahasiswa {
 
     public void setJudulPenelitian(String judulPenelitian) {
         this.judulPenelitian = judulPenelitian;
+    }
+
+    @Override
+    public Double getNilaiAkhir(int kodeMK) {
+        MatkulAmbil matkulIni = null;
+        for(MatkulAmbil matakuliah : matkul){
+            if(matakuliah.getMataKuliah().getKode() == kodeMK){
+                matkulIni = matakuliah;
+                break;
+            }
+        }
+        if(matkulIni != null){
+            return (matkulIni.getN1() + matkulIni.getN2() + matkulIni.getN3())/3.0;
+        }else{
+            return 0.0;
+        }
     }
 
     @Override

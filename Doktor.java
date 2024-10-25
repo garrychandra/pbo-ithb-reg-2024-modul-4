@@ -1,4 +1,4 @@
-public class Doktor extends Mahasiswa {
+public class Doktor extends Mahasiswa implements MahasiswaMethod {
     private String judulPenelitian;
     private int sidang1 = 0;
     private int sidang2 = 0;
@@ -43,6 +43,11 @@ public class Doktor extends Mahasiswa {
 
     public void setSidang3(int sidang3) {
         this.sidang3 = sidang3;
+    }
+
+    @Override
+    public Double getNilaiAkhir(int kodeMK) {
+        return (sidang1 + sidang2 + sidang3)/3.0;
     }
 
     @Override

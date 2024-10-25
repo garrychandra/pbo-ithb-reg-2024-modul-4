@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.sql.Date;
 import java.sql.Time;
 
@@ -41,7 +40,10 @@ public class dummy {
 
         Karyawan karyawan = new Karyawan("garry", "dipatiukur", "jakarta 2 desember 1900", 123456, 654321, 1000);
         karyawan.getPresensiStaff().add(presensiStaff);
+        
 
+        System.out.println(dosenTetap.getGaji());
+/*/
         System.out.println("Sarjana\n" + sarjana +
                 "\n\nMagister\n" + magister +
                 "\n\nDoktor\n" + doktor +
@@ -54,6 +56,6 @@ public class dummy {
                 "\n\nMata Kuliah Diambil\n" + matkulAmbil +
                 "\n\nPresensi\n" + presensi +
                 "\n\nPresensi Staff\n" + presensiStaff);
-
+*/
     }
 }

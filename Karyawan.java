@@ -1,7 +1,7 @@
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Karyawan extends Staff {
+public class Karyawan extends Staff implements StaffMethod {
     private int salary;
     private List<PresensiStaff> presensiStaff;
 
@@ -31,6 +31,19 @@ public class Karyawan extends Staff {
 
     public List<PresensiStaff> getPresensiStaff() {
         return presensiStaff;
+    }
+
+    @Override
+    public int getGaji() {
+        int count = 0;
+
+        for(int i = 0; i < presensiStaff.size(); i++){
+           if(presensiStaff.get(i).getStatus() == Status.HADIR){
+                count++;                
+            }
+        }
+        return (int) (count / 22.0 * salary);
+
     }
 
     @Override

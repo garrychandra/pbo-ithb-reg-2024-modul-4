@@ -1,7 +1,7 @@
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
-public class Sarjana extends Mahasiswa {
+public class Sarjana extends Mahasiswa implements MahasiswaMethod{
     private List<MatkulAmbil> matkul;
 
     public Sarjana(String nama, String alamat, String ttl, int noTelp, int nim, String jurusan){
@@ -21,6 +21,25 @@ public class Sarjana extends Mahasiswa {
     public void setMatkul(List<MatkulAmbil> matkul) {
         this.matkul = matkul;
     }
+
+
+
+    @Override
+    public Double getNilaiAkhir(int kodeMK) {
+        MatkulAmbil matkulIni = null;
+        for(MatkulAmbil matakuliah : matkul){
+            if(matakuliah.getMataKuliah().getKode() == kodeMK){
+                matkulIni = matakuliah;
+                break;
+            }
+        }
+        if(matkulIni != null){
+            return (matkulIni.getN1() + matkulIni.getN2() + matkulIni.getN3())/3.0;
+        }else{
+            return 0.0;
+        }
+    }
+
 
     @Override
     public String toString() {
