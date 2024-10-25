@@ -1,3 +1,3 @@
 public interface MahasiswaMethod {
-    Double getNilaiAkhir(int kodeMK);
+    public Double getNilaiAkhir(int kodeMK);
 }
