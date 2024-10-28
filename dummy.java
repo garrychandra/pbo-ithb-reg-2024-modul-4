@@ -50,7 +50,11 @@ public class dummy {
         people.add(doktor);
         people.add(magister);
         people.add(sarjana);
-        
+
+        List<Mahasiswa> mahasiswa = new ArrayList<>();
+        mahasiswa.add(doktor);
+        mahasiswa.add(magister);
+        mahasiswa.add(sarjana);
         
         
         String text;
@@ -62,6 +66,16 @@ public class dummy {
         if(n == JOptionPane.YES_OPTION){
                 displayStatus(people);
         }
+
+        n = JOptionPane.showConfirmDialog(null,
+                "Mau Nilai Akhir?",
+                "Print Nilai Akhir?",
+                JOptionPane.YES_NO_OPTION);
+        
+        if(n == JOptionPane.YES_OPTION){
+                displayNilaiAkhir(mahasiswa);
+                
+         }
 
 
         
@@ -91,5 +105,30 @@ public class dummy {
                         JOptionPane.showMessageDialog(null, "Nama : " + people.get(i).getNama() + "\nStatus: " + people.get(i).getClass().getSimpleName());
                 }
         }
+    }
+
+    static void displayNilaiAkhir(List<Mahasiswa> mahasiswa){
+        String text = JOptionPane.showInputDialog("Enter NIM: ");
+        int nim = Integer.parseInt(text);
+        text = JOptionPane.showInputDialog("Enter Kode Mata Kuliah: ");
+        int matkul = Integer.parseInt(text);
+        Double nilaiAkhir = 0.0;
+        for(int i = 0; i < mahasiswa.size(); i++){
+                if(mahasiswa.get(i).getNIM() == nim){
+                        if(mahasiswa.get(i) instanceof Sarjana){
+                                Sarjana sarjana = (Sarjana) mahasiswa.get(i);
+                                nilaiAkhir = sarjana.getNilaiAkhir(matkul);
+                                
+                        }
+                        else if(mahasiswa.get(i) instanceof Magister){
+                                Magister magister = (Magister) mahasiswa.get(i);
+                                nilaiAkhir = magister.getNilaiAkhir(matkul);
+                        } else{
+                                Doktor doktor = (Doktor) mahasiswa.get(i);
+                                nilaiAkhir = doktor.getNilaiAkhir(matkul);
+                        }
+                }
+        }
+        JOptionPane.showMessageDialog(null, "Nilai Akhir: " + nilaiAkhir);
     }
 }
