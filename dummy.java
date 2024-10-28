@@ -1,5 +1,8 @@
 import java.sql.Date;
 import java.sql.Time;
+import javax.swing.JOptionPane;
+import java.util.List;
+import java.util.ArrayList;
 
 public class dummy {
     public static void main(String[] args) {
@@ -40,9 +43,31 @@ public class dummy {
 
         Karyawan karyawan = new Karyawan("garry", "dipatiukur", "jakarta 2 desember 1900", 123456, 654321, 1000);
         karyawan.getPresensiStaff().add(presensiStaff);
-        
 
-        System.out.println(dosenTetap.getGaji());
+        List<SIA> people = new ArrayList<>();
+        people.add(dosenHonorer);
+        people.add(karyawan);
+        people.add(doktor);
+        people.add(magister);
+        people.add(sarjana);
+        
+        
+        
+        String text;
+        int n = JOptionPane.showConfirmDialog(null,
+                        "Mau Print Status?",
+                        "Print Status?",
+                        JOptionPane.YES_NO_OPTION);
+
+        if(n == JOptionPane.YES_OPTION){
+                displayStatus(people);
+        }
+
+
+        
+        
+        
+        //System.out.println(dosenTetap.getGaji());
 /*/
         System.out.println("Sarjana\n" + sarjana +
                 "\n\nMagister\n" + magister +
@@ -57,5 +82,14 @@ public class dummy {
                 "\n\nPresensi\n" + presensi +
                 "\n\nPresensi Staff\n" + presensiStaff);
 */
+    }
+
+    static void displayStatus(List<SIA> people){
+        String text = JOptionPane.showInputDialog("Enter Name: ");
+        for(int i = 0; i < people.size(); i++){
+                if(people.get(i).getNama().equals(text)){
+                        JOptionPane.showMessageDialog(null, "Nama : " + people.get(i).getNama() + "\nStatus: " + people.get(i).getClass().getSimpleName());
+                }
+        }
     }
 }
