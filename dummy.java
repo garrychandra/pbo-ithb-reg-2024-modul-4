@@ -8,7 +8,7 @@ public class dummy {
     public static void main(String[] args) {
 
         Presensi presensi = new Presensi(new Date(0), 1);
-        PresensiStaff presensiStaff = new PresensiStaff(new Date(System.currentTimeMillis()), 0, 0);
+        PresensiStaff presensiStaff = new PresensiStaff(new Date(System.currentTimeMillis()), Status.HADIR, 100);
 
         MataKuliah mataKuliah = new MataKuliah(1, 4, "pbo");
         MatkulPilihan matkulPilihan = new MatkulPilihan(2, 4, "basdat", 9);
@@ -62,6 +62,10 @@ public class dummy {
 
         List<MatkulAmbil> matkulAmbils = new ArrayList<>();
         matkulAmbils.add(matkulAmbil);
+
+        List<Staff> staff = new ArrayList<>();
+        staff.addAll(dosen);
+        staff.add(karyawan);
         
         
         int n = JOptionPane.showConfirmDialog(null,
@@ -129,7 +133,7 @@ public class dummy {
                 JOptionPane.YES_NO_OPTION);
         
         if(n == JOptionPane.YES_OPTION){
-                displayJamDosen(dosen);
+                displayGajiStaff(staff);
                 
         }
     }
@@ -153,7 +157,7 @@ public class dummy {
         int nim = Integer.parseInt(text);
         text = JOptionPane.showInputDialog("Enter Kode Mata Kuliah: ");
         int matkul = Integer.parseInt(text);
-        Double nilaiAkhir = 0.0;
+        Double nilaiAkhir = -1.0;
         for(int i = 0; i < mahasiswa.size(); i++){
                 if(mahasiswa.get(i).getNIM() == nim){
                         if(mahasiswa.get(i) instanceof Sarjana){
@@ -168,9 +172,13 @@ public class dummy {
                                 Doktor doktor = (Doktor) mahasiswa.get(i);
                                 nilaiAkhir = doktor.getNilaiAkhir(matkul);
                         }
+                        break;
                 }
         }
-        JOptionPane.showMessageDialog(null, "Nilai Akhir: " + nilaiAkhir);
+        if(nilaiAkhir == -1.0)
+                JOptionPane.showMessageDialog(null, "Mahasiswa tidak ketemu","no Mahasiswa", JOptionPane.ERROR_MESSAGE);
+        else
+                JOptionPane.showMessageDialog(null, "Nilai Akhir: " + nilaiAkhir);
     }
 
     static void displayNilaiAkhirRata2(List<Mahasiswa> mahasiswa){
