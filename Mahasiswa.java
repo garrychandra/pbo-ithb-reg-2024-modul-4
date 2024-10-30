@@ -1,4 +1,4 @@
-public abstract class Mahasiswa extends SIA {
+public abstract class Mahasiswa extends SIA implements MahasiswaMethod {
 
     private int NIM;
     private String jurusan;
@@ -28,6 +28,11 @@ public abstract class Mahasiswa extends SIA {
 
     public int getNIM() {
         return NIM;
+    }
+
+    @Override
+    public Double getNilaiAkhir(int kodeMK){
+        return -1.0;
     }
 
     @Override

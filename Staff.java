@@ -1,4 +1,4 @@
-public abstract class Staff extends SIA {
+public abstract class Staff extends SIA implements StaffMethod{
     private int nik;
 
     protected Staff() {
@@ -17,6 +17,11 @@ public abstract class Staff extends SIA {
 
     public int getnik() {
         return nik;
+    }
+
+    @Override
+    public int getGaji(){
+        return -1;
     }
 
     @Override

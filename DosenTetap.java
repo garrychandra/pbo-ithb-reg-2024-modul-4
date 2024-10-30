@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class DosenTetap extends Dosen implements StaffMethod {
+public class DosenTetap extends Dosen {
     private int salary;
 
     public DosenTetap(String Nama, String alamat, String ttl, int notelp, int nik, String departemen, int salary) {

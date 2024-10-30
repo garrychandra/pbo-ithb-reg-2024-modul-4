@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Magister extends Mahasiswa implements MahasiswaMethod {
+public class Magister extends Mahasiswa {
 
     private List<MatkulAmbil> matkul;
     private String judulPenelitian;
@@ -48,7 +48,7 @@ public class Magister extends Mahasiswa implements MahasiswaMethod {
         if(matkulIni != null){
             return (matkulIni.getN1() + matkulIni.getN2() + matkulIni.getN3())/3.0;
         }else{
-            return 0.0;
+            return -1.0;
         }
     }
 

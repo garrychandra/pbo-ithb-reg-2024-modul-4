@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class Karyawan extends Staff implements StaffMethod {
+public class Karyawan extends Staff {
     private int salary;
     private List<PresensiStaff> presensiStaff;
 

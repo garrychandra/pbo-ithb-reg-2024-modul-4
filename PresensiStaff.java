@@ -1,35 +1,34 @@
 import java.sql.Date;
-import java.sql.Time;
 
 public class PresensiStaff extends Presensi {
-    private Time jam;
+    private int jam;
 
-    public PresensiStaff(Date date, Status status, Time jam) {
+    public PresensiStaff(Date date, Status status, int jam) {
         super(date, status);
         this.jam = jam;
     }
 
-    public PresensiStaff(Date date, int status, Time jam) {
+    public PresensiStaff(Date date, int status, int jam) {
         super(date, status);
         this.jam = jam;
     }
 
     public PresensiStaff() {
         super();
-        this.jam = new Time(0);
+        this.jam = 0;
     }
 
-    public void setJam(Time jam) {
+    public void setJam(int jam) {
         this.jam = jam;
     }
 
-    public Time getJam() {
+    public int getJam() {
         return jam;
     }
 
     @Override
     public String toString() {
-        return super.toString() + " Jam: " + jam.toString();
+        return super.toString() + " Jam: " + jam;
     }
 
 }

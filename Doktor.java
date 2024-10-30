@@ -1,4 +1,4 @@
-public class Doktor extends Mahasiswa implements MahasiswaMethod {
+public class Doktor extends Mahasiswa {
     private String judulPenelitian;
     private int sidang1 = 0;
     private int sidang2 = 0;

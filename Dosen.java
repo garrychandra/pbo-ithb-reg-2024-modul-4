@@ -33,6 +33,10 @@ public abstract class Dosen extends Staff{
         return matkulAjar;
     }
 
+    public int getGaji(){
+        return -1;
+    }
+
     @Override
     public String toString() {
         return super .toString() +"\nDepartemen: " + departemen + "\nMata Kuliah Diajar: " + matkulAjar.toString();
